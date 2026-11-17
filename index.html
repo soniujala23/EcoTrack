@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoTrack | Smart Waste Management</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-icon">♻</div><h2>EcoTrack</h2>
+<p>Smart Waste Management</p></div>
+    <nav>
+      <a class="nav-link active" href="#dashboard">▦ <span>Dashboard</span></a>
+      <a class="nav-link" href="#bins">▤ <span>Bins</span></a>
+      <a class="nav-link" href="#alerts">♧ <span>Alerts</span><b id="sideAlertCount">0</b></a>
+      <a class="nav-link" href="#map-section">⌖ <span>Map</span></a>
+      <a class="nav-link" href="#analytics">▥ <span>Analytics</span></a>
+    </nav>
+    <div class="sidebar-bottom"><div class="leaf">🌿</div><p>Cleaner City<br>Greener Tomorrow ♥</p></div>
+  </aside>
+
+  <main class="main" id="dashboard">
+    <header class="topbar">
+      <div><h1>Smart Waste Management Dashboard</h1><p>Monitor · Manage · Keep Our City Clean 🌿</p></div>
+      <div class="top-actions"><span class="live-pill"><i></i> Live Simulation</span><span class="updated">◷ Last Updated: <b id="updated">--</b></span><div class="avatar">●</div></div>
+    </header>
+
+    <section class="stats-grid">
+      <article class="stat-card blue"><div class="stat-icon">▤</div><div><p>Total Bins</p><strong id="totalBins">0</strong></div></article>
+      <article class="stat-card red"><div class="stat-icon">⚠</div><div><p>Bins Full</p><strong id="criticalBins">0</strong></div></article>
+      <article class="stat-card green"><div class="stat-icon">✓</div><div><p>Normal Bins</p><strong id="normalBins">0</strong></div></article>
+      <article class="stat-card orange"><div class="stat-icon">♟</div><div><p>Active Alerts</p><strong id="activeAlerts">0</strong></div></article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel bins-panel" id="bins">
+        <div class="panel-heading"><h2>▥ &nbsp;Virtual Dustbin Monitoring</h2><button class="text-btn" id="addBinBtn">+ Add Bin</button></div>
+        <div id="binList" class="bin-list"><p class="muted">Loading virtual bins...</p></div>
+      </article>
+      <article class="panel trend-panel">
+        <div class="panel-heading"><h2>⌁ &nbsp;Waste Level Trend</h2><span class="tag">Live</span></div>
+        <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+      </article>
+      <article class="panel map-panel" id="map-section">
+        <div class="panel-heading"><h2>⌖ &nbsp;Map View</h2><span class="tag">Virtual locations</span></div>
+        <div id="map"></div>
+      </article>
+    </section>
+
+    <section class="bottom-grid">
+      <article class="panel alerts-panel" id="alerts">
+        <div class="panel-heading"><h2>♧ &nbsp;Recent Alerts</h2><span class="tag">Notifications</span></div>
+        <div id="alertList" class="alert-list"><p class="muted">Loading alerts...</p></div>
+      </article>
+      <article class="panel sensor-panel">
+        <div class="panel-heading"><h2>◉ &nbsp;Sensor Readings (Simulated)</h2></div>
+        <div class="sensor-gauges">
+          <div class="gauge"><div class="gauge-circle" id="fillGauge"><strong id="gFill">--%</strong></div><b>Waste Level</b></div>
+          <div class="gauge"><div class="gauge-circle moisture" id="moistGauge"><strong id="gMoist">--%</strong></div><b>Moisture</b></div>
+          <div class="gauge"><div class="gauge-circle gas" id="gasGauge"><strong id="gGas">--</strong></div><b>Gas Index</b></div>
+        </div>
+        <p class="footnote">Demo values generated in software; not physical sensor measurements.</p>
+      </article>
+      <article class="panel analytics-panel" id="analytics">
+        <div class="panel-heading"><h2>▥ &nbsp;Weekly Analytics</h2></div>
+        <div class="chart-wrap small"><canvas id="weeklyChart"></canvas></div>
+      </article>
+    </section>
+    <footer>Smart Waste Management · Software-based IoT simulation · Demo data only</footer>
+  </main>
+</div>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
